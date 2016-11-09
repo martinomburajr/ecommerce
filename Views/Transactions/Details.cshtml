@@ -1,0 +1,49 @@
+﻿@model Poppel.Models.OrderItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Name")
+        </dt>
+
+        <dd>
+            @Html.Label(Model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Price")
+        </dt>
+
+        <dd>
+            @Html.Label("R" + Model.Product.Cost))
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Description")
+        </dt>
+
+        <dd>
+            @Html.Label(Model.Product.Description)
+        </dd>
+        <dt>
+            @Html.DisplayName("Image")
+        </dt>
+
+        <dd>
+           <img src="@Url.Content("~/Images/"+Model.Product.image)" width="300px" height="220px"/>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

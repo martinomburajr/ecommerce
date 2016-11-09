@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0ddf66faf35e4913828c9df6b77d745d" Name="Diagram1">
+        <EntityTypeShape EntityType="PoppelDBModel.Customer" Width="1.5" PointX="7.75" PointY="1.125" />
+        <EntityTypeShape EntityType="PoppelDBModel.Delivery" Width="1.5" PointX="5.25" PointY="7.625" />
+        <EntityTypeShape EntityType="PoppelDBModel.OrderItem" Width="1.5" PointX="5.125" PointY="4.875" />
+        <EntityTypeShape EntityType="PoppelDBModel.Payment" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="PoppelDBModel.PoppelStore" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="PoppelDBModel.Product" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PoppelDBModel.Transaction" Width="1.5" PointX="7.875" PointY="4.125" />
+        <EntityTypeShape EntityType="PoppelDBModel.User" Width="1.5" PointX="0.75" PointY="4.375" />
+        <AssociationConnector Association="PoppelDBModel.FK_PaymentId2" />
+        <AssociationConnector Association="PoppelDBModel.FK_TransactionId2" />
+        <AssociationConnector Association="PoppelDBModel.FK_UserId2" />
+        <AssociationConnector Association="PoppelDBModel.FK_OrderItem" />
+        <AssociationConnector Association="PoppelDBModel.FK_Product" />
+        <AssociationConnector Association="PoppelDBModel.FK_User" />
+        <AssociationConnector Association="PoppelDBModel.FK_UserId" />
+        <AssociationConnector Association="PoppelDBModel.FK_ProductId" />
+        <AssociationConnector Association="PoppelDBModel.FK_CustomerTransaction1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

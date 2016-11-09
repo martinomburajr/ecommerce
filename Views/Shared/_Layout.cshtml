@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poppel Industries</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body >
+    @{ 
+        IList<Poppel.Models.OrderItem> shoppingCart = Poppel.Controllers.LoggedUser.ShoppingCart;
+    }
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if(Poppel.Controllers.LoggedUser.loggedUser != null)
+                {
+                    if (Poppel.Controllers.LoggedUser.loggedUser.Status.Trim() == "A")
+                    {
+                        @Html.ActionLink("Admin", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Poppel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                }
+                else
+                {
+                    @Html.ActionLink("Poppel", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
+                
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Cart("+@shoppingCart.Count+")", "Index", "Transactions")</li>
+                    @if (Poppel.Controllers.LoggedUser.loggedUser != null)
+                    {
+                        if (Poppel.Controllers.LoggedUser.loggedUser.Status.Trim() == "A")
+                        {
+                            <li>@Html.ActionLink("Manage Users", "Index", "Customers")</li>
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Poppel</p>
+            <table>
+                <thead>
+                    <tr><th>Contact Us</th></tr>                
+                    <tr>
+                        <th>Poppel Industries</th>         
+                    </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Retreat
+                    </td>
+                    <td>
+                        Benoni
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cape Town, WC
+                    </td>
+                    <td>
+                        Johannesburg, GP
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        718 326-1999
+                    </td>
+                    <td>
+                        718 326-9009
+                    </td>
+                </tr>
+                
+            </tbody>
+            </table>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

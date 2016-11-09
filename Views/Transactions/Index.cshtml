@@ -1,0 +1,107 @@
+﻿@model Poppel.Controllers.LoggedUser
+
+@{
+    ViewBag.Title = "Index";
+    IList<Poppel.Models.OrderItem> shoppingCart = ViewBag.ShoppingCart;
+}
+
+<h2>Shopping Cart</h2>
+    
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Name")
+        </th>
+        <th>
+            @Html.Label("Cost")
+        </th>
+        <th>
+            @Html.Label("Quantity")
+        </th>
+        <th>            
+            @Html.Label("Total Cost")
+        </th>
+        <th></th>
+    </tr>
+    @{
+        int counter = 0;
+    }
+@foreach (var item in shoppingCart)
+{
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Quantity)
+        </td>
+
+            <td>
+                @(item.Quantity * item.Product.Cost)
+            </td>
+               <td>
+                     @Html.ActionLink("Details", "Details", new { id = counter }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = counter })      
+        </td>
+        @{ 
+            counter++;
+        }
+        
+    </tr>
+   
+}
+    <tr>
+        <h3>Total : R @ViewBag.Total</h3>
+    </tr>
+</table>
+
+<p></p>
+<p></p>
+<p></p>
+
+@using (Html.BeginForm("Index", "Payment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <h2>Payment</h2>
+    <hr />
+    <div class="form-group">
+        @Html.Label("Visa/Mastercard/American Express", new { @class = "col-md-2 control-label" })
+        <div class="col-md-5">
+            @Html.RadioButton("Visa", "Visa", new { @class = "form-control" })
+            @Html.RadioButton("Mastercard", "Mastercard", new { @class = "form-control" })
+            @Html.RadioButton("American Express", "AmericanExpress", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Card Number", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("CardNumber")
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("CVC", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("CVC")
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Card Name", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("CardName")
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Email", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("EmailAddress")
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Make Purchase" />
+        </div>
+    </div>
+}
